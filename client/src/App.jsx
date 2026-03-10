@@ -37,37 +37,42 @@ export default function App() {
   return (
     <div>
       <header className="app-header">
-        <div className="header-left">
-          {showBack && (
-            <button className="back-btn" onClick={handleBack}>← {t.back}</button>
-          )}
+        {/* Row 1: Title */}
+        <div className="app-header-title-row">
+          <div className="app-logo">
+            <div className="app-logo-title">{t.appTitle}</div>
+            {cropYear && (
+              <span className="app-logo-sub" style={{ color: 'rgba(255,220,80,0.75)' }}>
+                {cropYear}
+              </span>
+            )}
+          </div>
         </div>
 
-        <div className="app-logo">
-          <div className="app-logo-title">{t.appTitle}</div>
-          {cropYear && (
-            <span className="app-logo-sub" style={{ color: 'rgba(255,220,80,0.75)' }}>
-              {cropYear}
-            </span>
-          )}
-        </div>
-
-        <div className="header-right">
-          <button
-            className="settings-gear-btn"
-            onClick={() => setShowSettings(true)}
-            aria-label="Settings"
-            title="Settings"
-          >⚙️</button>
-          <div className="lang-toggle">
-            <button className={`lang-btn${lang === 'en' ? ' active' : ''}`} onClick={() => setLang('en')} aria-label="English">
-              <span className="flag">🇺🇸</span>
-              <span className="lang-label">EN</span>
-            </button>
-            <button className={`lang-btn${lang === 'es' ? ' active' : ''}`} onClick={() => setLang('es')} aria-label="Español">
-              <span className="flag">🇲🇽</span>
-              <span className="lang-label">ES</span>
-            </button>
+        {/* Row 2: Back btn (left) + Settings/Lang (right) */}
+        <div className="app-header-controls-row">
+          <div className="header-left">
+            {showBack && (
+              <button className="back-btn" onClick={handleBack}>← {t.back}</button>
+            )}
+          </div>
+          <div className="header-right">
+            <button
+              className="settings-gear-btn"
+              onClick={() => setShowSettings(true)}
+              aria-label="Settings"
+              title="Settings"
+            >⚙️</button>
+            <div className="lang-toggle">
+              <button className={`lang-btn${lang === 'en' ? ' active' : ''}`} onClick={() => setLang('en')} aria-label="English">
+                <span className="flag">🇺🇸</span>
+                <span className="lang-label">EN</span>
+              </button>
+              <button className={`lang-btn${lang === 'es' ? ' active' : ''}`} onClick={() => setLang('es')} aria-label="Español">
+                <span className="flag">🇲🇽</span>
+                <span className="lang-label">ES</span>
+              </button>
+            </div>
           </div>
         </div>
       </header>
