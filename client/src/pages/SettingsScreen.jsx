@@ -17,6 +17,7 @@ function EditableList({ title, titleEs, items, onChange, accentColor = '#1E130A'
   const [newName, setNewName] = useState('');
 
   const toggle = (id) => onChange(items.map(it => it.id === id ? { ...it, active: !it.active } : it));
+  const deleteItem = (id) => onChange(items.filter(it => it.id !== id));
   const moveUp = (idx) => { if (idx === 0) return; const a = [...items]; [a[idx-1], a[idx]] = [a[idx], a[idx-1]]; onChange(a); };
   const moveDown = (idx) => { if (idx === items.length-1) return; const a = [...items]; [a[idx], a[idx+1]] = [a[idx+1], a[idx]]; onChange(a); };
   const addItem = () => {
@@ -43,6 +44,7 @@ function EditableList({ title, titleEs, items, onChange, accentColor = '#1E130A'
             <button className={`config-toggle-btn${item.active ? ' on' : ' off'}`} onClick={() => toggle(item.id)}>
               {item.active ? (lang === 'es' ? 'Activo' : 'Active') : (lang === 'es' ? 'Oculto' : 'Hidden')}
             </button>
+            <button className="config-delete-btn" onClick={() => deleteItem(item.id)} title="Delete">✕</button>
           </div>
         ))}
       </div>
