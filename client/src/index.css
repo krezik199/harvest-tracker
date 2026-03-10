@@ -849,9 +849,9 @@ h1, h2, h3, h4 {
 .settings-screen {
   position: fixed;
   inset: 0;
-  top: 56px; /* below app header */
+  top: 0;
   background: var(--cream);
-  z-index: 150;
+  z-index: 300;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
