@@ -1,0 +1,19 @@
+{
+  "name": "harvest-tracker",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Farm harvest logistics tracker — bilingual, commodity-first",
+  "scripts": {
+    "install:all": "npm install && cd client && npm install",
+    "dev:server": "node server/index.js",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "googleapis": "^144.0.0"
+  }
+}
