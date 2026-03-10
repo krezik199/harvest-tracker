@@ -54,6 +54,13 @@ const DEFAULT_CONFIG = {
     potatoes: ["Russet Burbank", "Ranger Russet", "Umatilla", "Shepody", "Other / Otro"].map((name, i) => ({ id: `ptv${i}`, name, active: true })),
     onions:   ["Vaquero", "Cometa", "Infinity", "Highlander", "Other / Otro"].map((name, i) => ({ id: `ov${i}`, name, active: true })),
   },
+
+  // fieldAssignments[fieldId] = { [commodityKey]: [varietyName, ...] }
+  // Empty = no restrictions (all commodities/varieties shown)
+  fieldAssignments: {},
+
+  // storageAssignments[storageId] = { [commodityKey]: [varietyName, ...] }
+  storageAssignments: {},
 };
 
 // Deep clone so we can reset to defaults if needed
@@ -92,6 +99,8 @@ app.post('/api/config', (req, res) => {
   if (patch.trucks !== undefined)           appConfig.trucks = patch.trucks;
   if (patch.buyers !== undefined)           appConfig.buyers = patch.buyers;
   if (patch.varieties !== undefined)        appConfig.varieties = patch.varieties;
+  if (patch.fieldAssignments !== undefined)   appConfig.fieldAssignments = patch.fieldAssignments;
+  if (patch.storageAssignments !== undefined) appConfig.storageAssignments = patch.storageAssignments;
 
   console.log('Config updated:', Object.keys(patch).join(', '));
   res.json({ success: true, config: appConfig });
